@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee House</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Pam<sup>™</sup></a>
+        <nav>
+            <a href="index.html" class="active" data-translate="home">ГЛАВНАЯ</a>
+            <a href="about.html" data-translate="about">О НАС</a>
+            <a href="menu.html" data-translate="menu">МЕНЮ</a>
+            <a href="#contacts" data-translate="contacts">КОНТАКТЫ</a>
+            <button id="languageToggle" class="language-toggle">EN</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1><span data-translate="welcome">ДОБРО ПОЖАЛОВАТЬ В</span><br><span data-translate="coffeeHouse">КОФЕЙНЮ</span></h1>
+                <p data-translate="heroText">Уютная атмосфера, ароматный кофе и свежая выпечка ждут вас в нашей кофейне.</p>
+                <button class="btn" data-translate="viewMenu">СМОТРЕТЬ МЕНЮ</button>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-item">
+                <div class="feature-text">
+                    <h2 data-translate="ourSpecials">НАШИ СПЕЦИАЛЬНЫЕ ПРЕДЛОЖЕНИЯ</h2>
+                    <p data-translate="specialsText">Откройте для себя наши уникальные сезонные напитки и десерты, созданные нашими опытными бариста.</p>
+                    <button class="btn" data-translate="learnMore">ПОДРОБНЕЕ</button>
+                </div>
+                <div class="feature-image latte-art"></div>
+            </div>
+
+            <div class="feature-item reverse">
+                <div class="feature-image coffee-beans"></div>
+                <div class="feature-text">
+                    <h2 data-translate="freshlyBrewed">СВЕЖЕСВАРЕННЫЙ КОФЕ</h2>
+                    <p data-translate="brewedText">Мы используем только отборные кофейные зерна и профессиональное оборудование для создания идеального вкуса.</p>
+                    <button class="btn" data-translate="learnMore">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-text">
+                    <h2 data-translate="viewOurMenu">НАШЕ МЕНЮ</h2>
+                    <p data-translate="menuText">Широкий выбор кофейных напитков, чая и десертов, которые порадуют даже самых искушенных гурманов.</p>
+                    <button class="btn" data-translate="viewMenu">СМОТРЕТЬ МЕНЮ</button>
+                </div>
+                <div class="feature-image croissant"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="expanded-footer" id="contacts">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-translate="contactUs">СВЯЖИТЕСЬ С НАМИ</h3>
+                <p>Email: info@coffeehouse.com</p>
+                <p data-translate="phone">Телефон: +7 (999) 123-45-67</p>
+                <p data-translate="address">Адрес: ул. Кофейная, 15</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="workHours">ЧАСЫ РАБОТЫ</h3>
+                <p data-translate="weekdays">Пн-Пт: 8:00 - 22:00</p>
+                <p data-translate="weekends">Сб-Вс: 9:00 - 23:00</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="followUs">СЛЕДИТЕ ЗА НАМИ</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-translate="footer">© 2024 Coffee House. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

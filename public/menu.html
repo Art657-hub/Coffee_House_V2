@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee House - Меню</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Pam<sup>™</sup></a>
+        <nav>
+            <a href="index.html" data-translate="home">ГЛАВНАЯ</a>
+            <a href="about.html" data-translate="about">О НАС</a>
+            <a href="menu.html" class="active" data-translate="menu">МЕНЮ</a>
+            <a href="#contacts" data-translate="contacts">КОНТАКТЫ</a>
+            <button id="languageToggle" class="language-toggle">EN</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="menu-hero">
+            <div class="hero-content">
+                <h1 data-translate="menuTitle">НАШЕ МЕНЮ</h1>
+                <p data-translate="menuHeroText">Откройте для себя богатство вкусов нашей кофейни</p>
+            </div>
+        </section>
+
+        <section class="menu-content">
+            <div class="menu-category">
+                <h2 data-translate="coffeeMenu">КОФЕ</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=870&auto=format&fit=crop" alt="Эспрессо">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 data-translate="espresso">Эспрессо</h3>
+                                <span class="price">180₽</span>
+                            </div>
+                            <p data-translate="espressoDesc">Классический итальянский эспрессо</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=870&auto=format&fit=crop" alt="Капучино">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 data-translate="cappuccino">Капучино</h3>
+                                <span class="price">250₽</span>
+                            </div>
+                            <p data-translate="cappuccinoDesc">Эспрессо с нежной молочной пенкой</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?q=80&w=870&auto=format&fit=crop" alt="Латте">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 data-translate="latte">Латте</h3>
+                                <span class="price">270₽</span>
+                            </div>
+                            <p data-translate="latteDesc">Эспрессо с горячим молоком и небольшим количеством молочной пены</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h2 data-translate="dessertMenu">ДЕСЕРТЫ</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=870&auto=format&fit=crop" alt="Круассан">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 data-translate="croissant">Круассан</h3>
+                                <span class="price">160₽</span>
+                            </div>
+                            <p data-translate="croissantDesc">Свежевыпеченный масляный круассан</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 data-translate="cheesecake">Чизкейк</h3>
+                                <span class="price">320₽</span>
+                            </div>
+                            <p data-translate="cheesecakeDesc">Нежный чизкейк с ягодным соусом</p>
+                        </div>
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=870&auto=format&fit=crop" alt="Чизкейк">
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=870&auto=format&fit=crop" alt="Тирамису">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 data-translate="tiramisu">Тирамису</h3>
+                                <span class="price">340₽</span>
+                            </div>
+                            <p data-translate="tiramisuDesc">Классический итальянский десерт с кофейным вкусом</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="expanded-footer" id="contacts">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-translate="contactUs">СВЯЖИТЕСЬ С НАМИ</h3>
+                <p>Email: info@coffeehouse.com</p>
+                <p data-translate="phone">Телефон: +7 (999) 123-45-67</p>
+                <p data-translate="address">Адрес: ул. Кофейная, 15</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="workHours">ЧАСЫ РАБОТЫ</h3>
+                <p data-translate="weekdays">Пн-Пт: 8:00 - 22:00</p>
+                <p data-translate="weekends">Сб-Вс: 9:00 - 23:00</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="followUs">СЛЕДИТЕ ЗА НАМИ</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-translate="footer">© 2024 Coffee House. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
