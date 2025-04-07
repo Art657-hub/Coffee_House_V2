@@ -34,18 +34,41 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Функция для закрытия меню
+    function closeMenu() {
+        burgerMenu.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+    
     // Обработчик клика по бургер-меню
-    burgerMenu.addEventListener('click', function() {
+    burgerMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
         burgerMenu.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
     
     // Закрываем меню при клике на ссылку
     navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function() {
-            burgerMenu.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
+        link.addEventListener('click', closeMenu);
+    });
+    
+    // Закрываем меню при клике вне его
+    document.addEventListener('click', function(e) {
+        if (!navMenu.contains(e.target) && !burgerMenu.contains(e.target)) {
+            closeMenu();
+        }
+    });
+    
+    // Предотвращаем закрытие при клике внутри меню
+    navMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+    
+    // Закрываем меню при изменении размера окна
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            closeMenu();
+        }
     });
     
     languageToggle.addEventListener('click', function() {

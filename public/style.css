@@ -134,9 +134,10 @@ nav a.active {
 .hero-content {
     max-width: 600px;
     padding: 2rem;
-    background-color: rgba(43, 24, 16, 0.7);
+    background-color: rgba(43, 24, 16, 0.5);
     border-radius: 10px;
     z-index: 1;
+    backdrop-filter: blur(5px);
 }
 
 .hero-content h1 {
@@ -144,13 +145,15 @@ nav a.active {
     margin-bottom: 1.5rem;
     line-height: 1.2;
     color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-content p {
     font-size: 1.3rem;
     margin-bottom: 2rem;
-    color: #e0e0e0;
+    color: #ffffff;
     line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Специфичные фоновые изображения */
@@ -205,42 +208,155 @@ nav a.active {
     }
 }
 
-.features {
+/* Общие стили для всех основных разделов */
+.features, .about-content, .menu-content {
     padding: 4rem 10%;
+    background-color: rgba(26, 15, 10, 0.5);
 }
 
-.feature-item {
+.feature-item, .about-item, .menu-item {
     display: flex;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
     gap: 4rem;
+    background-color: rgba(166, 124, 82, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(166, 124, 82, 0.2);
 }
 
-.feature-item.reverse {
+.feature-item:hover, .about-item:hover, .menu-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.feature-item.reverse, .about-item.reverse {
     flex-direction: row-reverse;
 }
 
-.feature-text {
-    flex: 1;
-}
-
-.feature-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-}
-
-.feature-text p {
-    margin-bottom: 2rem;
-    color: #e0e0e0;
-}
-
-.feature-image {
+.feature-image, .about-image {
     flex: 1;
     height: 400px;
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
     border-radius: 10px;
+    position: relative;
+}
+
+.feature-image::after, .about-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+    pointer-events: none;
+}
+
+.feature-image img, .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.feature-item:hover .feature-image img, .about-item:hover .about-image img {
+    transform: scale(1.1);
+}
+
+.feature-text, .about-text {
+    flex: 1;
+    padding: 2rem;
+}
+
+.feature-text h2, .about-text h2, .menu-category h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.feature-text h2::after, .about-text h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #a67c52;
+    transition: width 0.3s ease;
+}
+
+.feature-item:hover .feature-text h2::after, .about-item:hover .about-text h2::after {
+    width: 100px;
+}
+
+.feature-text p, .about-text p, .menu-item p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для кнопок в основных разделах */
+.feature-text .btn, .about-text .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background-color: rgba(166, 124, 82, 0.2);
+    border: 1px solid rgba(166, 124, 82, 0.3);
+    border-radius: 25px;
+    color: #a67c52;
+    transition: all 0.3s ease;
+}
+
+.feature-text .btn:hover, .about-text .btn:hover {
+    background-color: rgba(166, 124, 82, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Адаптивные стили для основных разделов */
+@media (max-width: 768px) {
+    .features, .about-content, .menu-content {
+        padding: 2rem 1rem;
+    }
+
+    .feature-item, .about-item, .menu-item {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+
+    .feature-item.reverse, .about-item.reverse {
+        flex-direction: column;
+    }
+
+    .feature-image, .about-image {
+        width: 100%;
+        height: 250px;
+    }
+
+    .feature-text, .about-text {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .feature-text h2, .about-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .feature-text p, .about-text p {
+        font-size: 1.1rem;
+    }
+
+    .feature-text h2::after, .about-text h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 .latte-art {
@@ -258,7 +374,9 @@ nav a.active {
 footer {
     background-color: #1a0f0a;
     padding: 4rem 10%;
-    margin-top: 0;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
 }
 
 .footer-content {
@@ -267,21 +385,40 @@ footer {
     gap: 3rem;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
 }
 
 .footer-section {
     text-align: left;
+    position: relative;
+    z-index: 2;
 }
 
 .footer-section h3 {
     color: #a67c52;
     margin-bottom: 1.5rem;
     font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .footer-section p {
-    color: #e0e0e0;
+    color: #ffffff;
     margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.footer-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(166, 124, 82, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-bottom p {
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .social-links {
@@ -373,7 +510,6 @@ footer {
     .feature-image {
         width: 100%;
         height: 250px;
-        margin: 0;
     }
 
     .feature-text h2 {
@@ -394,7 +530,7 @@ footer {
     /* Футер */
     footer {
         padding: 2rem 1rem;
-        margin-top: 60px;
+        margin-top: 2rem;
     }
 
     .footer-content {
@@ -408,6 +544,11 @@ footer {
 
     .social-links {
         align-items: center;
+    }
+
+    .footer-bottom {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
     }
 }
 
@@ -486,13 +627,32 @@ main {
 }
 
 .menu-category {
+    background-color: rgba(166, 124, 82, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
     margin-bottom: 4rem;
+    border: 1px solid rgba(166, 124, 82, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.menu-category h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #ffffff;
+.menu-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.menu-category h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #a67c52;
+    transition: width 0.3s ease;
+}
+
+.menu-category:hover h2::after {
+    width: 100px;
 }
 
 .menu-items {
@@ -502,18 +662,21 @@ main {
 }
 
 .menu-item {
-    background-color: rgba(166, 124, 82, 0.1);
+    background-color: rgba(166, 124, 82, 0.05);
     border-radius: 10px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     overflow: hidden;
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: 1.5rem;
     gap: 1.5rem;
+    border: 1px solid rgba(166, 124, 82, 0.1);
 }
 
 .menu-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background-color: rgba(166, 124, 82, 0.1);
 }
 
 .menu-item-content {
@@ -526,14 +689,25 @@ main {
     height: 150px;
     overflow: hidden;
     border-radius: 8px;
-    order: 2;
+    position: relative;
+}
+
+.menu-item-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+    pointer-events: none;
 }
 
 .menu-item-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .menu-item:hover .menu-item-image img {
@@ -548,20 +722,35 @@ main {
 }
 
 .menu-item h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #ffffff;
+    position: relative;
+    display: inline-block;
+}
+
+.menu-item h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #a67c52;
+    transition: width 0.3s ease;
+}
+
+.menu-item:hover h3::after {
+    width: 60px;
 }
 
 .price {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #a67c52;
     font-weight: bold;
-}
-
-.menu-item p {
-    color: #e0e0e0;
-    font-size: 1rem;
-    line-height: 1.5;
+    padding: 0.5rem 1rem;
+    background-color: rgba(166, 124, 82, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(166, 124, 82, 0.2);
 }
 
 /* Стили для страницы акций */
@@ -579,13 +768,24 @@ main {
 
 .promotions {
     padding: 4rem 10%;
+    background-color: rgba(26, 15, 10, 0.5);
 }
 
 .promotion-item {
     display: flex;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
     gap: 4rem;
+    background-color: rgba(166, 124, 82, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(166, 124, 82, 0.2);
+}
+
+.promotion-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .promotion-item.reverse {
@@ -597,56 +797,105 @@ main {
     height: 400px;
     overflow: hidden;
     border-radius: 10px;
+    position: relative;
+}
+
+.promotion-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+    pointer-events: none;
 }
 
 .promotion-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
-.promotion-image:hover img {
+.promotion-item:hover .promotion-image img {
     transform: scale(1.1);
 }
 
 .promotion-content {
     flex: 1;
+    padding: 2rem;
 }
 
 .promotion-content h2 {
     font-size: 3rem;
     margin-bottom: 1.5rem;
     color: #ffffff;
+    position: relative;
+    display: inline-block;
+}
+
+.promotion-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #a67c52;
+    transition: width 0.3s ease;
+}
+
+.promotion-item:hover .promotion-content h2::after {
+    width: 100px;
 }
 
 .promotion-content p {
     font-size: 1.3rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     color: #e0e0e0;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
 .promotion-date {
+    display: inline-block;
     font-size: 1.1rem;
     padding: 0.8rem 1.5rem;
-}
-
-/* Стили для футера */
-.footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    margin-top: 2rem;
-    border-top: 1px solid rgba(166, 124, 82, 0.3);
-}
-
-.footer-bottom p {
+    background-color: rgba(166, 124, 82, 0.2);
+    border-radius: 25px;
     color: #a67c52;
-    font-size: 1rem;
+    border: 1px solid rgba(166, 124, 82, 0.3);
+    transition: all 0.3s ease;
+}
+
+.promotion-item:hover .promotion-date {
+    background-color: rgba(166, 124, 82, 0.3);
+    transform: translateY(-2px);
 }
 
 /* Адаптивные стили для страницы акций */
 @media (max-width: 768px) {
+    .promotions {
+        padding: 2rem 1rem;
+    }
+
+    .promotion-item,
+    .promotion-item.reverse {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+
+    .promotion-image {
+        width: 100%;
+        height: 250px;
+    }
+
+    .promotion-content {
+        padding: 1rem;
+        text-align: center;
+    }
+
     .promotion-content h2 {
         font-size: 2.2rem;
     }
@@ -658,6 +907,11 @@ main {
     .promotion-date {
         font-size: 1rem;
         padding: 0.6rem 1.2rem;
+    }
+
+    .promotion-content h2::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
@@ -748,64 +1002,42 @@ main {
         max-width: 200px;
     }
 
-    /* Главная страница */
-    .hero {
+    /* Общие стили для всех страниц */
+    main {
+        padding-top: 60px;
+    }
+
+    .hero-content,
+    .about-hero,
+    .menu-hero,
+    .promotions-hero {
         padding: 6rem 1rem;
         min-height: calc(100vh - 60px);
         margin-top: 60px;
     }
 
-    .hero-content {
-        padding: 2rem;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-        line-height: 1.2;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-        margin: 1rem 0;
-    }
-
-    .features {
+    /* Стили для футера */
+    footer {
         padding: 2rem 1rem;
+        margin-top: 2rem;
     }
 
-    .feature-item {
-        flex-direction: column;
-        margin-bottom: 2rem;
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
-    .feature-item.reverse {
-        flex-direction: column;
+    .footer-section {
+        text-align: center;
     }
 
-    .feature-text {
-        width: 100%;
-        padding: 1rem;
+    .social-links {
+        align-items: center;
     }
 
-    .feature-image {
-        width: 100%;
-        height: 250px;
-        margin: 1rem 0;
-    }
-
-    .feature-text h2 {
-        font-size: 1.5rem;
-    }
-
-    .feature-text p {
-        font-size: 1rem;
-    }
-
-    .btn {
-        width: 100%;
-        margin-top: 1rem;
+    .footer-bottom {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
     }
 }
 
