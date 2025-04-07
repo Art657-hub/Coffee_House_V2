@@ -6,7 +6,7 @@
 
 ## Роли в команде
 
-- **Product Owner (PO):** Моругин Максим  
+- **Product Owner (PO):** Pam group
 - **Scrum Master (SM):** Хомченко Артем  
 - **Разработчик (Dev Team):** Кочнев Павел  
 - **QA-инженер (QA):** Хомченко Артем  
