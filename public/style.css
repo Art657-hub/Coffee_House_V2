@@ -132,29 +132,40 @@ nav a.active {
 
 /* Стили для hero контента на всех страницах */
 .hero-content {
+    max-width: 600px;
     background-color: rgba(43, 24, 16, 0.5);
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
     backdrop-filter: blur(5px);
+    margin: 0 auto;
+    height: auto;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
     color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
     color: #ffffff;
-    line-height: 1.8;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    line-height: 1.4;
+}
+
+.hero-content .btn {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
 }
 
 /* Стили для кнопок */
@@ -203,14 +214,13 @@ nav a.active {
     }
 
     .hero-content {
-        max-width: 90%;
         padding: 1.5rem;
-        margin: 1rem auto;
+        min-height: 180px;
     }
 
     .hero-content h1 {
         font-size: 2rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
     }
 
     .hero-content p {
@@ -219,8 +229,30 @@ nav a.active {
     }
 
     .hero-content .btn {
-        margin-top: 1.5rem;
-        padding: 1rem 2rem;
+        padding: 0.7rem 1.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 1.2rem;
+        min-height: 160px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-content .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -691,6 +723,8 @@ main {
 
 .menu-content {
     padding: 4rem 10%;
+    padding-top: 3rem;
+    padding-bottom: 0px;
 }
 
 .menu-category {
@@ -785,7 +819,7 @@ main {
 }
 
 .menu-item-header {
-    display: flex;
+    display: block;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.5rem;
@@ -1221,5 +1255,85 @@ main {
         display: none;
         height: 250px;
         margin: 1rem 0;
+    }
+}
+
+/* Стили для админ-панели */
+.admin-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(26, 15, 10, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.login-form, .admin-panel {
+    text-align: center;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid #a67c52;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #a67c52;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #a67c52;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+button {
+    background-color: #a67c52;
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #8b5e3c;
+    transform: translateY(-2px);
+}
+
+/* Адаптивные стили для админ-панели */
+@media (max-width: 768px) {
+    .admin-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.6rem;
     }
 }

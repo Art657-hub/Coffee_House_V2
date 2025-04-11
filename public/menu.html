@@ -32,92 +32,19 @@
             </div>
         </section>
 
-        <section class="menu-content">
-            <div class="menu-category">
-                <h2 data-translate="coffeeMenu">КОФЕ</h2>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=870&auto=format&fit=crop" alt="Эспрессо">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 data-translate="espresso">Эспрессо</h3>
-                                <span class="price">180₽</span>
-                            </div>
-                            <p data-translate="espressoDesc">Классический итальянский эспрессо</p>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=870&auto=format&fit=crop" alt="Капучино">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 data-translate="cappuccino">Капучино</h3>
-                                <span class="price">250₽</span>
-                            </div>
-                            <p data-translate="cappuccinoDesc">Эспрессо с нежной молочной пенкой</p>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?q=80&w=870&auto=format&fit=crop" alt="Латте">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 data-translate="latte">Латте</h3>
-                                <span class="price">270₽</span>
-                            </div>
-                            <p data-translate="latteDesc">Эспрессо с горячим молоком и небольшим количеством молочной пены</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="menu-content">
+        <h2 data-translate="drinks">НАПИТКИ</h2>
+        <div class="menu-items" id="drinks-container">
+            <!-- Напитки будут загружены здесь -->
+        </div>
+    </section>
 
-            <div class="menu-category">
-                <h2 data-translate="dessertMenu">ДЕСЕРТЫ</h2>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=870&auto=format&fit=crop" alt="Круассан">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 data-translate="croissant">Круассан</h3>
-                                <span class="price">160₽</span>
-                            </div>
-                            <p data-translate="croissantDesc">Свежевыпеченный масляный круассан</p>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=1974&auto=format&fit=crop" alt="Чизкейк">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3>Чизкейк</h3>
-                                <span class="price">350 ₽</span>
-                            </div>
-                            <p>Нежный десерт из сливочного сыра на песочной основе</p>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=870&auto=format&fit=crop" alt="Тирамису">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 data-translate="tiramisu">Тирамису</h3>
-                                <span class="price">340₽</span>
-                            </div>
-                            <p data-translate="tiramisuDesc">Классический итальянский десерт с кофейным вкусом</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    <section class="menu-content">
+        <h2 data-translate="desserts">ДЕСЕРТЫ</h2>
+        <div class="menu-items" id="desserts-container">
+            <!-- Десерты будут загружены здесь -->
+        </div>
+    </section>
 
     <footer class="expanded-footer" id="contacts">
         <div class="footer-content">
@@ -145,6 +72,59 @@
     </footer>
 
     <script src="translations.js"></script>
+    <script src="menu_translations.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Функция для создания HTML элемента меню
+        function createMenuItem(item) {
+            const key = item.name.replace(/\s+/g, '');
+            return `
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="${item.urlimg}" alt="${item.nameru}">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 data-translate="${key}">${item.nameru}</h3>
+                            <span class="price">${item.summ} ₽</span>
+                        </div>
+                        <p data-translate="${key}Desc">${item.descriptionru}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Функция для загрузки данных меню
+        async function loadMenu() {
+            try {
+                const response = await fetch('get_menu_items.php');
+                const data = await response.json();
+                
+                // Заполняем контейнеры напитками и десертами
+                const drinksContainer = document.getElementById('drinks-container');
+                const dessertsContainer = document.getElementById('desserts-container');
+                
+                drinksContainer.innerHTML = data.drinks.map(createMenuItem).join('');
+                dessertsContainer.innerHTML = data.desserts.map(createMenuItem).join('');
+                
+                // После загрузки меню обновляем переводы
+                loadMenuTranslations();
+            } catch (error) {
+                console.error('Ошибка при загрузке меню:', error);
+            }
+        }
+
+        // Загружаем меню при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMenu();
+            
+            // Устанавливаем начальный язык
+            const currentLang = document.documentElement.lang;
+            const languageToggle = document.getElementById('languageToggle');
+            if (languageToggle) {
+                languageToggle.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+            }
+        });
+    </script>
 </body>
 </html> 

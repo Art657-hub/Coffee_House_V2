@@ -1,0 +1,14 @@
+<div class="menu-items">
+    <div class="menu-item">
+        <div class="menu-item-image">
+            <img src="{сдесь будет ссылка на изображение}" alt="{сдесь будет название}">
+        </div>
+        <div class="menu-item-content">
+            <div class="menu-item-header">
+                <h3 data-translate="espresso">{сдесь будет название}</h3>
+                <span class="price">{сдесь будет цена}</span>
+            </div>
+            <p data-translate="espressoDesc">{сдесь будет описание}</p>
+        </div>
+    </div>
+</div>
