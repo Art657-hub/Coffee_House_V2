@@ -1804,3 +1804,148 @@ td {
         font-size: 0.9rem;
     }
 }
+
+/* High-resolution display styles (2880x1800) */
+@media (min-width: 2560px) and (min-height: 1600px) {
+    :root {
+        --header-height: 80px;
+        --container-padding: 4rem;
+        --section-spacing: 6rem;
+        --card-spacing: 2.5rem;
+    }
+
+    html {
+        font-size: 18px;
+    }
+
+    .container {
+        max-width: 1800px;
+        padding: 0 var(--container-padding);
+    }
+
+    .hero-content {
+        max-width: 800px;
+        padding: 4rem;
+    }
+
+    .menu-items {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 3rem;
+        padding: 3rem;
+    }
+
+    .feature-item,
+    .about-item,
+    .promotion-item {
+        gap: 3rem;
+        padding: 3rem;
+    }
+
+    .menu-item-image img,
+    .feature-image img,
+    .about-image img,
+    .promotion-image img {
+        aspect-ratio: 16/9;
+        max-height: 600px;
+    }
+
+    header {
+        height: var(--header-height);
+        padding: 0 3rem;
+    }
+
+    .logo {
+        font-size: 2.5rem;
+    }
+
+    nav {
+        gap: 3rem;
+    }
+
+    nav a {
+        font-size: 1.4rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .language-toggle {
+        padding: 0.8rem 2rem;
+        font-size: 1.3rem;
+    }
+
+    .btn {
+        padding: 1.2rem 3rem;
+        font-size: 1.3rem;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        padding: 4rem;
+    }
+
+    .footer-section h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-section p {
+        font-size: 1.2rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+
+    table {
+        min-width: 800px;
+    }
+
+    th,
+    td {
+        padding: 1.2rem;
+        font-size: 1.2rem;
+    }
+
+    .menu-item {
+        padding: 2rem;
+    }
+
+    .menu-item h3 {
+        font-size: 1.8rem;
+    }
+
+    .menu-item p {
+        font-size: 1.2rem;
+    }
+
+    .price {
+        font-size: 1.5rem;
+    }
+
+    .promotion-item {
+        padding: 3rem;
+    }
+
+    .promotion-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .promotion-content p {
+        font-size: 1.3rem;
+    }
+
+    .promotion-date {
+        font-size: 1.2rem;
+    }
+
+    .about-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .about-text p {
+        font-size: 1.3rem;
+    }
+}
