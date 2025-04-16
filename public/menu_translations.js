@@ -15,7 +15,7 @@ async function loadMenuTranslations() {
     try {
         const response = await fetch('get_menu_items.php');
         const data = await response.json();
-        
+
         // Очищаем предыдущие переводы, кроме базовых
         menuTranslations.en = {
             drinks: "DRINKS",
@@ -25,7 +25,7 @@ async function loadMenuTranslations() {
             drinks: "НАПИТКИ",
             desserts: "ДЕСЕРТЫ"
         };
-        
+
         // Обрабатываем напитки
         data.drinks.forEach(item => {
             const key = item.name.replace(/\s+/g, '');
@@ -34,7 +34,7 @@ async function loadMenuTranslations() {
             menuTranslations.en[`${key}Desc`] = item.descriptionen;
             menuTranslations.ru[`${key}Desc`] = item.descriptionru;
         });
-        
+
         // Обрабатываем десерты
         data.desserts.forEach(item => {
             const key = item.name.replace(/\s+/g, '');
@@ -43,7 +43,7 @@ async function loadMenuTranslations() {
             menuTranslations.en[`${key}Desc`] = item.descriptionen;
             menuTranslations.ru[`${key}Desc`] = item.descriptionru;
         });
-        
+
         // Обновляем переводы на странице
         updateMenuTranslations();
     } catch (error) {
@@ -55,7 +55,7 @@ async function loadMenuTranslations() {
 function updateMenuTranslations() {
     const currentLang = document.documentElement.lang;
     const elements = document.querySelectorAll('[data-translate]');
-    
+
     elements.forEach(element => {
         const key = element.getAttribute('data-translate');
         if (menuTranslations[currentLang] && menuTranslations[currentLang][key]) {
@@ -66,25 +66,26 @@ function updateMenuTranslations() {
 
 // Функция для переключения языка меню
 async function toggleMenuLanguage() {
-    const currentLang = document.documentElement.lang;
+    const currentLang = localStorage.getItem('language') || 'ru';
     const newLang = currentLang === 'ru' ? 'en' : 'ru';
+    localStorage.setItem('language', newLang);
     document.documentElement.lang = newLang;
-    
+
     // Обновляем текст кнопки переключения языка
     const languageToggle = document.getElementById('languageToggle');
     if (languageToggle) {
         languageToggle.textContent = newLang === 'ru' ? 'EN' : 'RU';
     }
-    
+
     // Перезагружаем меню с новым языком
     try {
         const response = await fetch('get_menu_items.php');
         const data = await response.json();
-        
+
         // Обновляем контейнеры с напитками и десертами
         const drinksContainer = document.getElementById('drinks-container');
         const dessertsContainer = document.getElementById('desserts-container');
-        
+
         // Функция для создания элемента меню с учетом языка
         const createMenuItem = (item) => {
             const key = item.name.replace(/\s+/g, '');
@@ -103,10 +104,10 @@ async function toggleMenuLanguage() {
                 </div>
             `;
         };
-        
+
         drinksContainer.innerHTML = data.drinks.map(createMenuItem).join('');
         dessertsContainer.innerHTML = data.desserts.map(createMenuItem).join('');
-        
+
         // Обновляем переводы
         loadMenuTranslations();
     } catch (error) {
@@ -117,7 +118,7 @@ async function toggleMenuLanguage() {
 // Загружаем переводы при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
     loadMenuTranslations();
-    
+
     // Добавляем обработчик для кнопки переключения языка
     const languageToggle = document.getElementById('languageToggle');
     if (languageToggle) {
