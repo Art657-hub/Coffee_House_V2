@@ -1,6 +1,6 @@
 <?php
 // Параметры подключения к базе данных
-$servername = "VH301.spaceweb.ru";
+$servername = "localhost";
 $username = "xomartemmm";
 $password = "aB2-883-eVx-w9V"; // Указываем правильный пароль
 $dbname = "xomartemmm";
